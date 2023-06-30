@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "Prueba de roles MongoDB",
   "main": "index.js",
-  "engines": {
-    "node": "18.x"
-  },
+  "engines": { "node": "18.x" },
   "scripts": {
     "build": "babel src --out-dir build",
     "dev": "nodemon src/index.js --exec babel-node",

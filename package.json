@@ -6,8 +6,8 @@
   "engines": { "node": "18.x" },
   "scripts": {
     "build": "babel src --out-dir build",
-    "dev": "nodemon src/index.js --exec babel-node",
-    "start": "babel-node src/index.js"
+    "dev": "nodemon index.js --exec babel-node",
+    "start": "babel-node index.js"
   },
   "keywords": [],
   "author": "User01",

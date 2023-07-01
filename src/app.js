@@ -8,7 +8,8 @@ import authRoutes from './routes/auth.routes.js'
 import userRoutes from './routes/user.routes'
 import datosGeneralesRoutes from './routes/datosGenerales.routes'
 import antiguedadRoutes from './routes/antiguedad.routes'
-import noticiasRoutes from './routes/noticias.routes'
+import preparacionAcademicaRoutes from './routes/preparacionAcademica.routes'
+import cursosRoutes from './routes/cursos.routes'
 
 const app = express()
 // createRoles();
@@ -31,6 +32,7 @@ app.use('/api/auth',authRoutes)
 app.use('/api/users',userRoutes)
 app.use('/api/datosGenerales',datosGeneralesRoutes)
 app.use('/api/antiguedad',antiguedadRoutes)
-app.use('/api/noticias',noticiasRoutes)
+app.use('/api/preparacionAcademica',preparacionAcademicaRoutes)
+app.use('/api/cursos',cursosRoutes)
 
 export default app;

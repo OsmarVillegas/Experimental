@@ -12,6 +12,26 @@ const datosGeneralesSchema = new Schema(
       type: String,
       required: true,
       trim: true,
+    },
+    etapa: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    fechaLimite: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    periodoEvaluado: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    etapaConLetra: {
+      type: String,
+      required: true,
+      trim: true,
     }
   },
   {

@@ -36,7 +36,7 @@ export const findOneAntiguedad = async(req ,res)=>{
     if(!newAntiguedadSaved)
     return res.
     status(404)
-    .json({message:'el dato general con es id no existe'});
+    .json({message:'el dato de antigüedad con es id no existe'});
 
     
     res.json(newAntiguedadSaved);
@@ -53,10 +53,10 @@ export const deleteAntiguedad = async(req,res)=>{
     const data= await Antiguedad.findByIdAndDelete(id);
 
     res.json({
-        message: 'el dato ha sido eliminado'
+        message: 'el dato de antigüedad ha sido eliminado'
     });
    } catch (error) {
-    res.status(500).json({message:'Error, el dato no fue eliminado'});
+    res.status(500).json({message:'Error, el dato de antigüedad no fue eliminado'});
    }
 
 }
@@ -67,7 +67,7 @@ export const updateAntiguedad = async(req,res)=>{
         useFindAndModify:false
        });
     
-       res.json({message: "dato general actualizado"});
+       res.json({message: "dato de antigüedad a actualizado"});
     
    } catch (error) {
     res.status(500).json({message:'No se puedo actualizar'});

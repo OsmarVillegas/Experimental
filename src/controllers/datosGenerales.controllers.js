@@ -17,7 +17,11 @@ export const  createDatosGenerales = async(req,res)=>{
     try {
         const newDatosGenerales = new datosGenerales({
             municipio:req.body.municipio,
-            anio:req.body.anio
+            anio:req.body.anio,
+            etapa:req.body.etapa,
+            fechaLimite:req.body.fechaLimite,
+            periodoEvaluado:req.body.periodoEvaluado,
+            etapaConLetra:req.body.etapaConLetra
         });
 
         const datosGeneralesSaved = await newDatosGenerales.save();

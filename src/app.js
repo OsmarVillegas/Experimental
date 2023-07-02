@@ -15,7 +15,9 @@ import cursosRoutes from './routes/cursos.routes'
 const app = express()
 // createRoles();
 
-app.use(cors())
+const whiteList = ['http://localhost:4200']
+
+app.use(cors({ origin: whiteList }))
 
 app.set('pkg', pkg)
 

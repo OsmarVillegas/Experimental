@@ -8,6 +8,9 @@ const antiguedadSchema = new Schema(
       required: true,
       trim: true,
     },
+  },
+  {
+    versionKey: false
   }
 );
 

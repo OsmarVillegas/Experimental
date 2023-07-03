@@ -8,10 +8,6 @@ router.post('/', antiguedadCtrl.createAntiguedad);
 
 router.get('/', antiguedadCtrl.findAllAntiguedad);
 
-router.get('/:id', antiguedadCtrl.findOneAntiguedad);
-
-router.delete('/:id', antiguedadCtrl.deleteAntiguedad);
-
 router.put('/:id', antiguedadCtrl.updateAntiguedad);
 
 // router.post('/', authJwt.verifyToken,eventosCtrl.createEventos);

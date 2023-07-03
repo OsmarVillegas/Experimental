@@ -15,7 +15,6 @@ const cursosSchema = new Schema(
     }
   },
   {
-    versionKey: false,
     timestamps: true,
   }
 );

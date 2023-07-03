@@ -10,6 +10,7 @@ const antiguedadSchema = new Schema(
     },
   },
   {
+    _id: false,
     versionKey: false
   }
 );

@@ -3,6 +3,11 @@ import { Schema, model } from "mongoose";
 /* Modelo de la base de datos Eventos */
 const cursosSchema = new Schema(
   {
+    id: {
+      type: Number,
+      required: true,
+      trim: true,
+    },
     nombre: {
       type: String,
       required: true,
@@ -16,8 +21,8 @@ const cursosSchema = new Schema(
   },
   {
     versionKey: false,
-    timestamps: true,
   }
 );
+
 
 export default model("Cursos", cursosSchema);

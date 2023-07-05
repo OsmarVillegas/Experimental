@@ -15,6 +15,7 @@ export const createCursos = async(req,res)=>{
      }
     try {
         const newCursos = new Cursos({
+            id: req.body.id,
             nombre:req.body.nombre,
             puntaje:req.body.puntaje
         });

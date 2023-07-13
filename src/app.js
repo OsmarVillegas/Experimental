@@ -3,17 +3,14 @@ import morgan from "morgan";
 import pkg from '../package.json'
 import cors from 'cors'
 
-import {createRoles} from './lib/initialSetup'
-
-import authRoutes from './routes/auth.routes.js'
-import userRoutes from './routes/user.routes'
 import datosGeneralesRoutes from './routes/datosGenerales.routes'
 import antiguedadRoutes from './routes/antiguedad.routes'
 import preparacionAcademicaRoutes from './routes/preparacionAcademica.routes'
 import cursosRoutes from './routes/cursos.routes'
+import filesRoutes from './routes/files.routes'
+import multer from "multer";
 
 const app = express()
-// createRoles();
 
 app.use((req, res, next) => {
     res.append('Access-Control-Allow-Origin',['*']);
@@ -41,8 +38,7 @@ app.get('/', (req, res) => {
     })
 })
 
-app.use('/api/auth',authRoutes)
-app.use('/api/users',userRoutes)
+app.use('/api/files/',filesRoutes)
 app.use('/api/datosGenerales',datosGeneralesRoutes)
 app.use('/api/antiguedad',antiguedadRoutes)
 app.use('/api/preparacionAcademica',preparacionAcademicaRoutes)

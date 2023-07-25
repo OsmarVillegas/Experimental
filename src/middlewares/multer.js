@@ -15,7 +15,7 @@ export function uploadFileFormatoFCAPS() {
 
 export function uploadFileJefatura() {
   const storage = multer.diskStorage({
-    destination: "./src/routes/files",
+    destination: "/tmp/",
     filename: function (_req, file, cb) {
       cb(null, "Jefatura.pdf");
     },

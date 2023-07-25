@@ -20,7 +20,7 @@ app.use((req, res, next) => {
 })
 
 
-const whiteList = ['http://localhost:4200','https://copper-axiom-368104.web.app']
+const whiteList = ['*']
 
 app.use(cors({ origin: whiteList }))
 

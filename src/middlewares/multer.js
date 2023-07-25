@@ -19,6 +19,9 @@ export function uploadFileJefatura() {
     filename: function (_req, file, cb) {
       cb(null, "Jefatura.pdf");
     },
+    limits: {
+      fileSize: 1024 * 1024 * 5 // Tamaño máximo del archivo en bytes (5 MB en este caso)
+    }
   });
 
   const upload = multer({ storage: storage }).single("file");

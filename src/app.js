@@ -12,15 +12,8 @@ import multer from "multer";
 
 const app = express()
 
-app.use((req, res, next) => {
-    res.append('Access-Control-Allow-Origin',['http://localhost:4200','http://localhost:4200/admin','https://experimental-kteg.vercel.app/api/files/Jefatura']);
-    res.append('Access-Control-Allow-Methods','GET,PUT,POST,DELETE');
-    // res.append('Access-Control-Allow-Headers',['Content-Type']);
-    next()
-})
 
-
-const whiteList = ['http://localhost:4200','http://localhost:4200/admin','https://experimental-kteg.vercel.app/api/files/Jefatura']
+const whiteList = ['http://localhost:4200']
 
 app.use(cors({ origin: whiteList }))
 

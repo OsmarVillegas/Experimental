@@ -34,7 +34,7 @@ router.post("/Jefatura", uploadFileJefatura(), (req, res) => {
 });
 
 router.get("/Jefatura", (req, res) => {
-    const rutaArchivo = "/files/Jefatura.pdf";
+    const rutaArchivo = "/tmp/Jefatura.pdf";
   
     res.download(__dirname + rutaArchivo, (err) => {
       if (err) {

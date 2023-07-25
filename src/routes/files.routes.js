@@ -9,7 +9,10 @@ import {
   uploadFileHorario,
 } from "../middlewares/multer";
 
+import path from 'path';
+
 const router = Router();
+
 
 router.post("/Formato_FCAPS", uploadFileFormatoFCAPS(), (req, res) => {
   console.log(req.file);
@@ -34,9 +37,9 @@ router.post("/Jefatura", uploadFileJefatura(), (req, res) => {
 });
 
 router.get("/Jefatura", (req, res) => {
-    const rutaArchivo = "/tmp/Jefatura.pdf";
-  
-    res.download(__dirname + rutaArchivo, (err) => {
+    const rutaArchivo = path.resolve(`/tmp/Jefatura.pdf`);
+
+    res.download(rutaArchivo, (err) => {
       if (err) {
         // Manejar errores en caso de que el archivo no se encuentre o no se pueda descargar
         console.log(err);

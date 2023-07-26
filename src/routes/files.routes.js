@@ -72,9 +72,9 @@ router.post("/CentralesDRs", uploadFileCentralesDRs(), (req, res) => {
 });
 
 router.get("/CentralesDRs", (req, res) => {
-    const rutaArchivo = "/files/CentralesDRs.pdf";
-  
-    res.download(__dirname + rutaArchivo, (err) => {
+  const rutaArchivo = path.resolve(`/tmp/CentralesDRs.pdf`);
+
+    res.download(rutaArchivo, (err) => {
       if (err) {
         // Manejar errores en caso de que el archivo no se encuentre o no se pueda descargar
         console.log(err);

@@ -89,9 +89,9 @@ router.post("/Educativas", uploadFileEducativas(), (req, res) => {
 });
 
 router.get("/Educativas", (req, res) => {
-    const rutaArchivo = "/files/Educativas.pdf";
+  const rutaArchivo = path.resolve(`/tmp/Educativas.pdf`);
   
-    res.download(__dirname + rutaArchivo, (err) => {
+    res.download(rutaArchivo, (err) => {
       if (err) {
         // Manejar errores en caso de que el archivo no se encuentre o no se pueda descargar
         console.log(err);

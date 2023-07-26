@@ -106,9 +106,9 @@ router.post("/Inscripcion", uploadFileInscripcion(), (req, res) => {
 });
 
 router.get("/Inscripcion", (req, res) => {
-    const rutaArchivo = "/files/Inscripcion.pdf";
+    const rutaArchivo = path.resolve(`/tmp/Inscripcion.pdf`);
   
-    res.download(__dirname + rutaArchivo, (err) => {
+    res.download(rutaArchivo, (err) => {
       if (err) {
         // Manejar errores en caso de que el archivo no se encuentre o no se pueda descargar
         console.log(err);
@@ -124,9 +124,9 @@ router.post("/Horario", uploadFileHorario(), (req, res) => {
 });
 
 router.get("/Horario", (req, res) => {
-    const rutaArchivo = "/files/Horario.pdf";
-  
-    res.download(__dirname + rutaArchivo, (err) => {
+  const rutaArchivo = path.resolve(`/tmp/Horario.pdf`);
+
+    res.download(rutaArchivo, (err) => {
       if (err) {
         // Manejar errores en caso de que el archivo no se encuentre o no se pueda descargar
         console.log(err);

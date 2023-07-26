@@ -2,7 +2,7 @@ import multer from "multer";
 
 export function uploadFileFormatoFCAPS() {
   const storage = multer.diskStorage({
-    destination: "./src/routes/files",
+    destination: "/tmp/",
     filename: function (_req, file, cb) {
       cb(null, "Formato_FCAPS.pdf");
     },
@@ -46,7 +46,7 @@ export function uploadFileCentralesDRs() {
   const storage = multer.diskStorage({
     destination: "/tmp/",
     filename: function (_req, file, cb) {
-      cb(null, "CentralesDRs.pdf");
+      cb(null, "/tmp/");
     },
   });
 
@@ -70,7 +70,7 @@ export function uploadFileEducativas() {
 
 export function uploadFileInscripcion() {
   const storage = multer.diskStorage({
-    destination: "./src/routes/files",
+    destination: "/tmp/",
     filename: function (_req, file, cb) {
       cb(null, "Inscripcion.pdf");
     },
@@ -83,7 +83,7 @@ export function uploadFileInscripcion() {
 
 export function uploadFileHorario() {
   const storage = multer.diskStorage({
-    destination: "./src/routes/files",
+    destination: "/tmp/",
     filename: function (_req, file, cb) {
       cb(null, "Horario.pdf");
     },

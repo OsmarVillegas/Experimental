@@ -13,14 +13,14 @@ import multer from "multer";
 const app = express()
 
 app.use((req, res, next) => {
-    res.append('Access-Control-Allow-Origin',['http://localhost:4200']);
+    res.append('Access-Control-Allow-Origin',['http://localhost:4200','https://copper-axiom-368104.web.app/']);
     res.append('Access-Control-Allow-Methods','GET,PUT,POST,DELETE');
     // res.append('Access-Control-Allow-Headers',['Content-Type']);
     next()
 })
 
 
-const whiteList = ['http://localhost:4200']
+const whiteList = ['http://localhost:4200','https://copper-axiom-368104.web.app/']
 
 app.use(cors({ origin: whiteList }))
 

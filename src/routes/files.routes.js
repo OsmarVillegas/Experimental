@@ -20,9 +20,9 @@ router.post("/Formato_FCAPS", uploadFileFormatoFCAPS(), (req, res) => {
 });
 
 router.get("/Formato_FCAPS", (req, res) => {
-  const rutaArchivo = "/files/Formato_FCAPS.pdf";
+  const rutaArchivo = "/tmp/Formato_FCAPS.pdf";
 
-  res.download(__dirname + rutaArchivo, (err) => {
+  res.download(rutaArchivo, (err) => {
     if (err) {
       // Manejar errores en caso de que el archivo no se encuentre o no se pueda descargar
       console.log(err);

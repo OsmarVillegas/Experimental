@@ -46,7 +46,7 @@ export function uploadFileCentralesDRs() {
   const storage = multer.diskStorage({
     destination: "/tmp/",
     filename: function (_req, file, cb) {
-      cb(null, "/tmp/");
+      cb(null, "CentralesDRs.pdf");
     },
   });
 

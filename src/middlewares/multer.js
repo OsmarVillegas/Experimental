@@ -31,7 +31,7 @@ export function uploadFileJefatura() {
 
 export function uploadFileSNTE() {
   const storage = multer.diskStorage({
-    destination: "./src/routes/files",
+    destination: "/tmp/",
     filename: function (_req, file, cb) {
       cb(null, "SNTE.pdf");
     },
@@ -44,7 +44,7 @@ export function uploadFileSNTE() {
 
 export function uploadFileCentralesDRs() {
   const storage = multer.diskStorage({
-    destination: "./src/routes/files",
+    destination: "/tmp/",
     filename: function (_req, file, cb) {
       cb(null, "CentralesDRs.pdf");
     },
@@ -57,7 +57,7 @@ export function uploadFileCentralesDRs() {
 
 export function uploadFileEducativas() {
   const storage = multer.diskStorage({
-    destination: "./src/routes/files",
+    destination: "/tmp/",
     filename: function (_req, file, cb) {
       cb(null, "Educativas.pdf");
     },
@@ -70,7 +70,7 @@ export function uploadFileEducativas() {
 
 export function uploadFileInscripcion() {
   const storage = multer.diskStorage({
-    destination: "./src/routes/files",
+    destination: "/tmp/",
     filename: function (_req, file, cb) {
       cb(null, "Inscripcion.pdf");
     },
@@ -83,7 +83,7 @@ export function uploadFileInscripcion() {
 
 export function uploadFileHorario() {
   const storage = multer.diskStorage({
-    destination: "./src/routes/files",
+    destination: "/tmp/",
     filename: function (_req, file, cb) {
       cb(null, "Horario.pdf");
     },

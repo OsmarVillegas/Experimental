@@ -20,9 +20,9 @@ router.post("/Formato_FCAPS", uploadFileFormatoFCAPS(), (req, res) => {
 });
 
 router.get("/Formato_FCAPS", (req, res) => {
-  const rutaArchivo = "/files/Formato_FCAPS.pdf";
+  const rutaArchivo = path.resolve(`/tmp/Formato_FCAPS.pdf`);
 
-  res.download(__dirname + rutaArchivo, (err) => {
+  res.download(rutaArchivo, (err) => {
     if (err) {
       // Manejar errores en caso de que el archivo no se encuentre o no se pueda descargar
       console.log(err);
@@ -54,9 +54,9 @@ router.post("/SNTE", uploadFileSNTE(), (req, res) => {
 });
 
 router.get("/SNTE", (req, res) => {
-    const rutaArchivo = "/files/SNTE.pdf";
+    const rutaArchivo = path.resolve(`/tmp/SNTE.pdf`);
   
-    res.download(__dirname + rutaArchivo, (err) => {
+    res.download(rutaArchivo, (err) => {
       if (err) {
         // Manejar errores en caso de que el archivo no se encuentre o no se pueda descargar
         console.log(err);
@@ -72,9 +72,9 @@ router.post("/CentralesDRs", uploadFileCentralesDRs(), (req, res) => {
 });
 
 router.get("/CentralesDRs", (req, res) => {
-    const rutaArchivo = "/files/CentralesDRs.pdf";
+    const rutaArchivo = path.resolve(`/tmp/CentralesDRs.pdf`);
   
-    res.download(__dirname + rutaArchivo, (err) => {
+    res.download(rutaArchivo, (err) => {
       if (err) {
         // Manejar errores en caso de que el archivo no se encuentre o no se pueda descargar
         console.log(err);
@@ -89,9 +89,9 @@ router.post("/Educativas", uploadFileEducativas(), (req, res) => {
 });
 
 router.get("/Educativas", (req, res) => {
-    const rutaArchivo = "/files/Educativas.pdf";
+    const rutaArchivo = path.resolve(`/tmp/Educativas.pdf`);
   
-    res.download(__dirname + rutaArchivo, (err) => {
+    res.download(rutaArchivo, (err) => {
       if (err) {
         // Manejar errores en caso de que el archivo no se encuentre o no se pueda descargar
         console.log(err);
@@ -106,9 +106,10 @@ router.post("/Inscripcion", uploadFileInscripcion(), (req, res) => {
 });
 
 router.get("/Inscripcion", (req, res) => {
-    const rutaArchivo = "/files/Inscripcion.pdf";
+    const rutaArchivo = path.resolve(`/tmp/Inscripcion.pdf`);
   
-    res.download(__dirname + rutaArchivo, (err) => {
+  
+    res.download(rutaArchivo, (err) => {
       if (err) {
         // Manejar errores en caso de que el archivo no se encuentre o no se pueda descargar
         console.log(err);
@@ -124,9 +125,10 @@ router.post("/Horario", uploadFileHorario(), (req, res) => {
 });
 
 router.get("/Horario", (req, res) => {
-    const rutaArchivo = "/files/Horario.pdf";
+    const rutaArchivo = path.resolve(`/tmp/Horario.pdf`);
   
-    res.download(__dirname + rutaArchivo, (err) => {
+  
+    res.download(rutaArchivo, (err) => {
       if (err) {
         // Manejar errores en caso de que el archivo no se encuentre o no se pueda descargar
         console.log(err);

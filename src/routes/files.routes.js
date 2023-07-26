@@ -54,9 +54,9 @@ router.post("/SNTE", uploadFileSNTE(), (req, res) => {
 });
 
 router.get("/SNTE", (req, res) => {
-    const rutaArchivo = "/files/SNTE.pdf";
+  const rutaArchivo = path.resolve(`/tmp/SNTE.pdf`);
   
-    res.download(__dirname + rutaArchivo, (err) => {
+    res.download(rutaArchivo, (err) => {
       if (err) {
         // Manejar errores en caso de que el archivo no se encuentre o no se pueda descargar
         console.log(err);

@@ -48,17 +48,19 @@ router.get("/Formato_FCAPS", async (req, res) => {
 
     var file = Buffer.from(ff);
 
-    await fs.writeFileSync(path.resolve("/tmp/archivo.pdf"), lta[1]);
+    // await fs.writeFileSync(path.resolve("/tmp/archivo.pdf"), lta[1]);
 
-    await new Promise((resolve) => setTimeout(resolve, 1000)); // Esperar 500 ms
+    // await new Promise((resolve) => setTimeout(resolve, 1000)); // Esperar 500 ms
 
-    res.download(path.resolve("/tmp/archivo.pdf"), (err) => {
-      if (err) {
-        // Manejar errores en caso de que el archivo no se encuentre o no se pueda descargar
-        console.log(err);
-        res.status(404).send("Archivo no encontrado");
-      }
-    });
+    // res.download(path.resolve("/tmp/archivo.pdf"), (err) => {
+    //   if (err) {
+    //     // Manejar errores en caso de que el archivo no se encuentre o no se pueda descargar
+    //     console.log(err);
+    //     res.status(404).send("Archivo no encontrado");
+    //   }
+    // });
+
+    res.json(lta[1]);
 
 });
 

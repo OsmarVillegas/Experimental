@@ -37,7 +37,7 @@ router.post("/Formato_FCAPS", uploadFileFormatoFCAPS(), async (req, res) => {
 });
 
 router.get("/Formato_FCAPS", async (req, res) => {
-  try {
+
     var collection = db.collection("Formato_FCAPS");
 
     var archivo = await collection.findOne({ id: 1 });
@@ -59,9 +59,7 @@ router.get("/Formato_FCAPS", async (req, res) => {
         res.status(404).send("Archivo no encontrado");
       }
     });
-  } catch (err) {
-    res.send(err);
-  }
+
 });
 
 router.post("/Jefatura", uploadFileJefatura(), async (req, res) => {

@@ -1,8 +1,15 @@
 import mongoose from "mongoose";
+import { MongoClient } from "mongodb"
 
-mongoose.connect("mongodb+srv://optimen:optimen@cluster0.1jii1an.mongodb.net/test", {
+export var db;
+
+MongoClient
+  .connect("mongodb+srv://optimen:optimen@cluster0.1jii1an.mongodb.net/test", {
     useNewUrlParser: true,
     useUniFiedTopology: true,
-})
-    .then(db => console.log('DB is connected'))
-    .catch(error => console.log(error))
+  })
+  .then((client) => {
+    console.log("DB is connected");
+    db = client.db()
+  })
+  .catch((error) => console.log(error));

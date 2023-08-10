@@ -1,13 +1,16 @@
 import datosGenerales from '../models/datosGenerales';
+import {db} from "../database";
 
-export const findAllDatosGenerales = async(req,res)=>{
-     try {
-        const datosgenerales = await datosGenerales.find()
-        res.json(datosgenerales);
-     } catch (error) {
-        res.status(500).json({message: error.message||'ocurrio un error al devolver los datos generales'})
-     }
-}
+export const findAllDatosGenerales = async (req, res) => {
+    try {
+      const collection = db.collection("datosgenerales");
+  
+      const datosgenerales = await collection.find().toArray();
+      res.json(datosgenerales);
+    } catch (error) {
+      res.status(500).json({ message: error.message || 'Ocurrió un error al devolver los datos generales' });
+    }
+  };
 
 
 export const  createDatosGenerales = async(req,res)=>{

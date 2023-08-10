@@ -16,7 +16,7 @@ import { db } from "../database";
 const router = Router();
 
 router.post("/Formato_FCAPS", uploadFileFormatoFCAPS(), async (req, res) => {
-  try {
+
     var documento = await fs.readFileSync(
       path.resolve("/tmp/Formato_FCAPS.pdf")
     );
@@ -33,9 +33,7 @@ router.post("/Formato_FCAPS", uploadFileFormatoFCAPS(), async (req, res) => {
     res.send(
       "ok"
     );
-  } catch (err) {
-    res.send(err)
-  }
+
 });
 
 router.get("/Formato_FCAPS", async (req, res) => {

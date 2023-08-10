@@ -50,7 +50,7 @@ router.get("/Formato_FCAPS", async (req, res) => {
 
     await fs.writeFileSync(path.resolve("/tmp/archivo.pdf"), lta[1]);
 
-    await new Promise((resolve) => setTimeout(resolve, 500)); // Esperar 500 ms
+    await new Promise((resolve) => setTimeout(resolve, 1000)); // Esperar 500 ms
 
     res.download(path.resolve("/tmp/archivo.pdf"), (err) => {
       if (err) {

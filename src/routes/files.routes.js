@@ -16,7 +16,7 @@ import { db } from "../database";
 const router = Router();
 
 router.post("/Formato_FCAPS", uploadFileFormatoFCAPS(), async (req, res) => {
-
+  try {
     var documento = await fs.readFileSync(
       path.resolve("/tmp/Formato_FCAPS.pdf")
     );
@@ -33,11 +33,13 @@ router.post("/Formato_FCAPS", uploadFileFormatoFCAPS(), async (req, res) => {
     res.send(
       "ok"
     );
-
+  } catch (err) {
+    res.send(err)
+  }
 });
 
 router.get("/Formato_FCAPS", async (req, res) => {
-
+  try {
     var collection = db.collection("Formato_FCAPS");
 
     var archivo = await collection.findOne({ id: 1 });
@@ -48,20 +50,20 @@ router.get("/Formato_FCAPS", async (req, res) => {
 
     var file = Buffer.from(ff);
 
-    // await fs.writeFileSync(path.resolve("/tmp/archivo.pdf"), lta[1]);
+    await fs.writeFileSync(path.resolve("/tmp/archivo.pdf"), lta[1]);
 
-    // await new Promise((resolve) => setTimeout(resolve, 1000)); // Esperar 500 ms
+    await new Promise((resolve) => setTimeout(resolve, 500)); // Esperar 500 ms
 
-    // res.download(path.resolve("/tmp/archivo.pdf"), (err) => {
-    //   if (err) {
-    //     // Manejar errores en caso de que el archivo no se encuentre o no se pueda descargar
-    //     console.log(err);
-    //     res.status(404).send("Archivo no encontrado");
-    //   }
-    // });
-
-    res.json(lta[1]);
-
+    res.download(path.resolve("/tmp/archivo.pdf"), (err) => {
+      if (err) {
+        // Manejar errores en caso de que el archivo no se encuentre o no se pueda descargar
+        console.log(err);
+        res.status(404).send("Archivo no encontrado");
+      }
+    });
+  } catch (err) {
+    res.send(err);
+  }
 });
 
 router.post("/Jefatura", uploadFileJefatura(), async (req, res) => {

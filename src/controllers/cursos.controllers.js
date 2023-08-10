@@ -1,77 +1,103 @@
-import Cursos from '../models/cursos';
+import Cursos from "../models/cursos";
+import { db } from "../database";
+import { ObjectId } from "mongodb";
 
-export const findAllCursos = async(req,res)=>{
-     try {
-        const cursos = await Cursos.find()
-        res.json(cursos);
-     } catch (error) {
-        res.status(500).json({message: error.message||'ocurrio un error al devolver los cursos'})
-     }
-}
+export const findAllCursos = async (req, res) => {
+  try {
+    const collection = db.collection("cursos");
+    const cursos = await collection.find().toArray();
 
-export const createCursos = async(req,res)=>{
-    if(!req.body.nombre){   
-        return res.status(400).json({message: 'Valores de cursos es requerido'})
-     }
-    try {
-        const newCursos = new Cursos({
-            id: req.body.id,
-            nombre:req.body.nombre,
-            puntaje:req.body.puntaje
-        });
-
-        const newCursosSaved = await newCursos.save();
-        
-        res.json(newCursosSaved); 
-    } catch (error) {
-        res.status(500).json({message: error.message||'ocurrio un error al crear los valores de cursos'})
-    }
-}
-
-export const findOneCursos = async(req ,res)=>{
-
-    const {id}= req.params;
-    try {
-       
-   
-    const newCursosSaved = await Cursos.findById(id);
-    if(!newCursosSaved)
-    return res.
-    status(404)
-    .json({message:'el dato de cursos con es id no existe'});
-
-    
-    res.json(newCursosSaved);
-    } catch (error) {
-        res.status(500).json({message: error.message||'Eror con ese id'})
+    if (!db) {
+      res.send(db);
     }
 
-
-}
-
-export const deleteCursos = async(req,res)=>{
-    const {id}= req.params;
-   try {
-    const data = await Cursos.findByIdAndDelete(id);
-
-    res.json({
-        message: 'el dato de cursos ha sido eliminado'
+    res.json(cursos);
+  } catch (error) {
+    res.status(500).json({
+      message:
+        error.message || "Ocurrió un error al devolver los datos generales",
     });
-   } catch (error) {
-    res.status(500).json({message:'Error, el dato de cursos no fue eliminado'});
-   }
+  }
+};
 
-}
+export const createCursos = async (req, res) => {
+  if (!req.body.nombre) {
+    return res.status(400).json({ message: "Valores de cursos es requerido" });
+  }
 
-export const updateCursos = async(req,res)=>{
-   try {
-    await Cursos.findByIdAndUpdate(req.params.id,req.body,{
-        useFindAndModify:false
-       });
-    
-       res.json({message: "dato de cursos a actualizado"});
-    
-   } catch (error) {
-    res.status(500).json({message:'No se puedo actualizar'});
-   }
-}
+  try {
+    const collection = db.collection("cursos");
+
+    const newCursos = {
+      id: req.body.id,
+      nombre: req.body.nombre,
+      puntaje: req.body.puntaje
+    };
+
+    await collection.insertOne(newCursos);
+
+    res.json(newCursos);
+  } catch (error) {
+    res
+      .status(500)
+      .json({
+        message:
+          error.message || "Ocurrió un error al crear los cursos",
+      });
+  }
+};
+
+export const findOneCursos = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const collection = db.collection("cursos");
+
+    const cursosSaved = await collection.findOne({ _id: ObjectId(id) });
+    if (!cursosSaved) {
+      return res
+        .status(404)
+        .json({ message: "El dato general con ese id no existe" });
+    }
+
+    res.json(cursosSaved);
+  } catch (error) {
+    res.status(500).json({ message: error.message || "Error con ese id" });
+  }
+};
+
+export const deleteCursos = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const collection = db.collection("cursos");
+
+    const result = await collection.deleteOne({ _id: new ObjectId(id) });
+
+    if (result.deletedCount === 0) {
+      return res.status(404).json({ message: "El dato con ese id no existe" });
+    }
+
+    res.json({ message: "El dato ha sido eliminado" });
+  } catch (error) {
+    res.status(500).json({ message: "Error, el dato no fue eliminado" });
+  }
+};
+
+export const updateCursos = async (req, res) => {
+  try {
+    const collection = db.collection("cursos");
+
+    const result = await collection.updateOne(
+      { _id: new ObjectId(req.params.id) },
+      { $set: req.body }
+    );
+
+    if (result.matchedCount === 0) {
+      return res.status(404).json({ message: "El dato con ese id no existe" });
+    }
+
+    res.json({ message: "Dato general actualizado" });
+  } catch (error) {
+    res.status(500).json({ message: "No se pudo actualizar" });
+  }
+};

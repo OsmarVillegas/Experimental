@@ -1,89 +1,109 @@
-import datosGenerales from '../models/datosGenerales';
-import {db} from "../database";
+import datosGenerales from "../models/datosGenerales";
+import { db } from "../database";
+import { ObjectId } from "mongodb";
 
 export const findAllDatosGenerales = async (req, res) => {
-    try {
-      const collection = db.collection("datosgenerales");
-      const datosgenerales = await collection.find().toArray();
-      
-      if(!db){
-        res.send(db)
-      }
+  try {
+    const collection = db.collection("datosgenerales");
+    const datosgenerales = await collection.find().toArray();
 
-      res.json(datosgenerales);
-    } catch (error) {
-      res.status(500).json({ message: error.message || 'Ocurrió un error al devolver los datos generales' });
+    if (!db) {
+      res.send(db);
     }
-  };
 
+    res.json(datosgenerales);
+  } catch (error) {
+    res
+      .status(500)
+      .json({
+        message:
+          error.message || "Ocurrió un error al devolver los datos generales",
+      });
+  }
+};
 
-export const  createDatosGenerales = async(req,res)=>{
-    if(!req.body.municipio){   
-        return res.status(400).json({message: 'Municipio del evento es requerido'})
-     }
-    try {
-        const newDatosGenerales = new datosGenerales({
-            municipio:req.body.municipio,
-            anio:req.body.anio,
-            etapa:req.body.etapa,
-            fechaLimite:req.body.fechaLimite,
-            periodoEvaluado:req.body.periodoEvaluado,
-            etapaConLetra:req.body.etapaConLetra
-        });
+export const createDatosGenerales = async (req, res) => {
+  if (!req.body.municipio) {
+    return res
+      .status(400)
+      .json({ message: "Municipio del evento es requerido" });
+  }
 
-        const datosGeneralesSaved = await newDatosGenerales.save();
-        
-        res.json(datosGeneralesSaved); 
-    } catch (error) {
-        res.status(500).json({message: error.message||'ocurrio un error al crear los datos generales'})
+  try {
+    const collection = db.collection("datosgenerales");
+
+    const newDatosGenerales = {
+      municipio: req.body.municipio,
+      anio: req.body.anio,
+      etapa: req.body.etapa,
+      fechaLimite: req.body.fechaLimite,
+      periodoEvaluado: req.body.periodoEvaluado,
+      etapaConLetra: req.body.etapaConLetra,
+    };
+
+    await collection.insertOne(newDatosGenerales);
+
+    res.json(newDatosGenerales);
+  } catch (error) {
+    res
+      .status(500)
+      .json({
+        message:
+          error.message || "Ocurrió un error al crear los datos generales",
+      });
+  }
+};
+
+export const findOneDatosGenerales = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const collection = db.collection("datosgenerales");
+
+    const datosGeneralesSaved = await collection.findOne({ _id: ObjectId(id) });
+    if (!datosGeneralesSaved) {
+      return res
+        .status(404)
+        .json({ message: "El dato general con ese id no existe" });
     }
-}
 
-export const findOneDatosGenerales= async(req ,res)=>{
-
-    const {id}= req.params;
-    try {
-       
-   
-    const datosGeneralesSaved = await datosGenerales.findById(id);
-    if(!datosGeneralesSaved)
-    return res.
-    status(404)
-    .json({message:'el dato general con es id no existe'});
-
-    
     res.json(datosGeneralesSaved);
-    } catch (error) {
-        res.status(500).json({message: error.message||'Eror con ese id'})
+  } catch (error) {
+    res.status(500).json({ message: error.message || "Error con ese id" });
+  }
+};
+
+export const deleteDatosGenerales = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const collection = db.collection("datosgenerales");
+
+    const result = await collection.deleteOne({ _id: new ObjectId(id) });
+
+    if (result.deletedCount === 0) {
+      return res.status(404).json({ message: "El dato con ese id no existe" });
     }
 
+    res.json({ message: "El dato ha sido eliminado" });
+  } catch (error) {
+    res.status(500).json({ message: "Error, el dato no fue eliminado" });
+  }
+};
 
-}
+export const updateDatosGenerales = async (req, res) => {
+  try {
+    const collection = db.collection("datosgenerales");
 
-export const deleteDatosGenerales = async(req,res)=>{
-    const {id}= req.params;
-   try {
-    const data= await datosGenerales.findByIdAndDelete(id);
+    const result = await collection.updateOne(
+      { _id: new ObjectId(req.params.id) },
+      { $set: req.body }
+    );
 
-    res.json({
-        message: 'el dato ha sido eliminado'
-    });
-   } catch (error) {
-    res.status(500).json({message:'Error, el dato no fue liminado'});
-   }
+    if (result.matchedCount === 0) {
+      return res.status(404).json({ message: "El dato con ese id no existe" });
+    }
 
-}
-
-export const updateDatosGenerales = async(req,res)=>{
-
-   try {
-    await datosGenerales.findByIdAndUpdate(req.params.id,req.body,{
-        useFindAndModify:false
-       });
-    
-       res.json({message: "dato general actualizado"});
-    
-   } catch (error) {
-    res.status(500).json({message:'No se puedo actualizar'});
-   }
-}
+    res.json({ message: "Dato general actualizado" });
+  } catch (error) {
+    res.status(500).json({ message: "No se pudo actualizar" });
+  }
+};

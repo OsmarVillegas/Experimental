@@ -4,8 +4,12 @@ import {db} from "../database";
 export const findAllDatosGenerales = async (req, res) => {
     try {
       const collection = db.collection("datosgenerales");
-  
       const datosgenerales = await collection.find().toArray();
+      
+      if(!db){
+        res.send(db)
+      }
+
       res.json(datosgenerales);
     } catch (error) {
       res.status(500).json({ message: error.message || 'Ocurrió un error al devolver los datos generales' });

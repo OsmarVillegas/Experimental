@@ -21,8 +21,5 @@ async function connectToDatabase() {
 connectToDatabase();
 
 export function getDb() {
-  setTimeout(() => {
-    resolve();
-  }, 500);
   return db;
 }

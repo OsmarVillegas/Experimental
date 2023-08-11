@@ -13,7 +13,6 @@ import multer from "multer";
 const app = express()
 
 app.use((req, res, next) => {
-    // res.append('Access-Control-Allow-Origin',['http://localhost:4200']);
     res.append('Access-Control-Allow-Origin',['https://copper-axiom-368104.web.app','http://localhost:4200']);
     res.append('Access-Control-Allow-Methods','GET,PUT,POST,DELETE');
     // res.append('Access-Control-Allow-Headers',['Content-Type']);
@@ -21,7 +20,7 @@ app.use((req, res, next) => {
 })
 
 
-// const whiteList = ['http://localhost:4200']
+
 const whiteList = ['https://copper-axiom-368104.web.app','http://localhost:4200']
 
 app.use(cors({ origin: whiteList }))

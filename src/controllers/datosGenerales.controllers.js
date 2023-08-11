@@ -1,9 +1,10 @@
 import datosGenerales from "../models/datosGenerales";
-import { db } from "../database";
+import { getDb } from "../database";
 import { ObjectId } from "mongodb";
 
 export const findAllDatosGenerales = async (req, res) => {
   try {
+    const db = getDb();
     const collection = db.collection("datosgenerales");
     const datosgenerales = await collection.find().toArray();
 

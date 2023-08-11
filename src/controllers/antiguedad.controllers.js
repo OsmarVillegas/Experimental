@@ -1,9 +1,10 @@
 import Antiguedad from "../models/antiguedad";
-import { db } from "../database";
+import { getDb } from "../database";
 import { ObjectId } from "mongodb";
 
 export const findAllAntiguedad = async (req, res) => {
   try {
+    const db = await getDb();
     const collection = db.collection("antiguedads");
     const antiguedad = await collection.find().toArray();
 
@@ -30,6 +31,7 @@ export const createAntiguedad = async (req, res) => {
   }
 
   try {
+    const db = await getDb();
     const collection = db.collection("antiguedads");
 
     const newAntiguedad = {
@@ -52,6 +54,7 @@ export const findOneAntiguedad = async (req, res) => {
   const { id } = req.params;
 
   try {
+    const db = await getDb();
     const collection = db.collection("antiguedads");
 
     const antiguedadSaved = await collection.findOne({ _id: ObjectId(id) });
@@ -70,6 +73,7 @@ export const findOneAntiguedad = async (req, res) => {
 export const deleteAntiguedad = async (req, res) => {
   const { id } = req.params;
   try {
+    const db = await getDb();
     const collection = db.collection("antiguedads");
 
     const result = await collection.deleteOne({ _id: new ObjectId(id) });
@@ -87,6 +91,7 @@ export const deleteAntiguedad = async (req, res) => {
 export const updateAntiguedad = async (req, res) => {
 
   try {
+    const db = await getDb();
     const collection = db.collection("antiguedads");
 
     const result = await collection.updateOne(

@@ -24,6 +24,7 @@ export const createPreparacionAcademicaCtrl = async (req, res) => {
       .json({ message: "informacion de primaria del evento es requerido" });
   }
   try {
+    const db = await getDb();
     const collection = db.collection("preparacionacademicas");
 
     const newPreparacionAcademica = {
@@ -46,6 +47,7 @@ export const createPreparacionAcademicaCtrl = async (req, res) => {
 export const findOnePreparacionAcademicaCtrl = async (req, res) => {
   const { id } = req.params;
   try {
+    const db = await getDb();
     const collection = db.collection("preparacionacademicas");
 
     const preparacionacademicasSaved = await collection.findOne({ _id: ObjectId(id) });
@@ -65,6 +67,7 @@ export const deletePreparacionAcademicaCtrl = async (req, res) => {
   const { id } = req.params;
 
   try {
+    const db = await getDb();
     const collection = db.collection("preparacionacademicas");
 
     const result = await collection.deleteOne({ _id: new ObjectId(id) });
@@ -81,6 +84,7 @@ export const deletePreparacionAcademicaCtrl = async (req, res) => {
 
 export const updatePreparacionAcademicaCtrl = async (req, res) => {
   try {
+    const db = await getDb();
     const collection = db.collection("preparacionacademicas");
 
     const result = await collection.updateOne(

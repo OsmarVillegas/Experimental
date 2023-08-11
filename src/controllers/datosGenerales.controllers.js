@@ -31,6 +31,7 @@ export const createDatosGenerales = async (req, res) => {
   }
 
   try {
+    const db = await getDb();
     const collection = db.collection("datosgenerales");
 
     const newDatosGenerales = {
@@ -58,6 +59,7 @@ export const createDatosGenerales = async (req, res) => {
 export const findOneDatosGenerales = async (req, res) => {
   const { id } = req.params;
   try {
+    const db = await getDb();
     const collection = db.collection("datosgenerales");
 
     const datosGeneralesSaved = await collection.findOne({ _id: ObjectId(id) });
@@ -76,6 +78,7 @@ export const findOneDatosGenerales = async (req, res) => {
 export const deleteDatosGenerales = async (req, res) => {
   const { id } = req.params;
   try {
+    const db = await getDb();
     const collection = db.collection("datosgenerales");
 
     const result = await collection.deleteOne({ _id: new ObjectId(id) });
@@ -92,6 +95,7 @@ export const deleteDatosGenerales = async (req, res) => {
 
 export const updateDatosGenerales = async (req, res) => {
   try {
+    const db = await getDb();
     const collection = db.collection("datosgenerales");
 
     const result = await collection.updateOne(

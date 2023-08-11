@@ -1,9 +1,10 @@
 import Cursos from "../models/cursos";
-import { db } from "../database";
+import { getDb } from "../database";
 import { ObjectId } from "mongodb";
 
 export const findAllCursos = async (req, res) => {
   try {
+    const db = await getDb();
     const collection = db.collection("cursos");
     const cursos = await collection.find().toArray();
 
@@ -26,6 +27,7 @@ export const createCursos = async (req, res) => {
   }
 
   try {
+    const db = await getDb();
     const collection = db.collection("cursos");
 
     const newCursos = {
@@ -51,6 +53,7 @@ export const findOneCursos = async (req, res) => {
   const { id } = req.params;
 
   try {
+    const db = await getDb();
     const collection = db.collection("cursos");
 
     const cursosSaved = await collection.findOne({ _id: ObjectId(id) });
@@ -69,6 +72,7 @@ export const findOneCursos = async (req, res) => {
 export const deleteCursos = async (req, res) => {
   const { id } = req.params;
   try {
+    const db = await getDb();
     const collection = db.collection("cursos");
 
     const result = await collection.deleteOne({ _id: new ObjectId(id) });
@@ -85,6 +89,7 @@ export const deleteCursos = async (req, res) => {
 
 export const updateCursos = async (req, res) => {
   try {
+    const db = await getDb();
     const collection = db.collection("cursos");
 
     const result = await collection.updateOne(

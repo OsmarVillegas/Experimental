@@ -57,7 +57,7 @@ export const findOneAntiguedad = async (req, res) => {
     const db = await getDb();
     const collection = db.collection("antiguedads");
 
-    const antiguedadSaved = await collection.findOne({ _id: ObjectId(id) });
+    const antiguedadSaved = await collection.findOne({ _id: new ObjectId(id) });
     if (!antiguedadSaved) {
       return res
         .status(404)

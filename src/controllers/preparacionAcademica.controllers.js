@@ -50,7 +50,7 @@ export const findOnePreparacionAcademicaCtrl = async (req, res) => {
     const db = await getDb();
     const collection = db.collection("preparacionacademicas");
 
-    const preparacionacademicasSaved = await collection.findOne({ _id: ObjectId(id) });
+    const preparacionacademicasSaved = await collection.findOne({ _id: new ObjectId(id) });
     if (!preparacionacademicasSaved) {
       return res
         .status(404)
@@ -88,10 +88,8 @@ export const updatePreparacionAcademicaCtrl = async (req, res) => {
     const db = await getDb();
     const collection = db.collection("preparacionacademicas");
 
-    const idClean = id.substring(0, id.length - 1);
-
     const result = await collection.updateOne(
-      { _id: new ObjectId(idClean) },
+      { _id: new ObjectId(id) },
       { $set: req.body }
     );
 

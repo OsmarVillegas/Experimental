@@ -62,7 +62,7 @@ export const findOneDatosGenerales = async (req, res) => {
     const db = await getDb();
     const collection = db.collection("datosgenerales");
 
-    const datosGeneralesSaved = await collection.findOne({ _id: ObjectId(id) });
+    const datosGeneralesSaved = await collection.findOne({ _id: new ObjectId(id) });
     if (!datosGeneralesSaved) {
       return res
         .status(404)
@@ -71,7 +71,7 @@ export const findOneDatosGenerales = async (req, res) => {
 
     res.json(datosGeneralesSaved);
   } catch (error) {
-    res.status(500).json({ message: error.message || "Error con ese id" });
+    res.status(500).json({ message: error.message || "Error con ese id", id: id.length });
   }
 };
 
@@ -95,13 +95,12 @@ export const deleteDatosGenerales = async (req, res) => {
 
 export const updateDatosGenerales = async (req, res) => {
   const { id } = req.params;
-  const idClean = id.substring(0, id.length - 1);
   try {
     const db = await getDb();
     const collection = db.collection("datosgenerales");
 
     const result = await collection.updateOne(
-      { _id: new ObjectId(idClean) },
+      { _id: new ObjectId(id) },
       { $set: req.body }
     );
 
@@ -111,6 +110,6 @@ export const updateDatosGenerales = async (req, res) => {
 
     res.json({ message: "Dato general actualizado" });
   } catch (error) {
-    res.status(500).json({ message: "No se pudo actualizar", id:id.length, idClean: idClean.length, idCleanString: idClean });
+    res.status(500).json({ message: "No se pudo actualizar" });
   }
 };

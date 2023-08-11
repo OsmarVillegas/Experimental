@@ -89,13 +89,16 @@ export const deleteAntiguedad = async (req, res) => {
 };
 
 export const updateAntiguedad = async (req, res) => {
+  const { id } = req.params;
 
   try {
     const db = await getDb();
     const collection = db.collection("antiguedads");
 
+    const idClean = id.substring(0, id.length - 1);
+
     const result = await collection.updateOne(
-      { _id: new ObjectId(req.params.id) },
+      { _id: new ObjectId(idClean) },
       { $set: req.body }
     );
 

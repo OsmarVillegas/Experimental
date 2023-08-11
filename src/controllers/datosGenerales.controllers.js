@@ -99,9 +99,11 @@ export const updateDatosGenerales = async (req, res) => {
     const db = await getDb();
     const collection = db.collection("datosgenerales");
 
+    const idClean = id.substring(0, id.length - 1);
+
 
     const result = await collection.updateOne(
-      { _id: new ObjectId(id) },
+      { _id: new ObjectId(idClean) },
       { $set: req.body }
     );
 
@@ -111,6 +113,6 @@ export const updateDatosGenerales = async (req, res) => {
 
     res.json({ message: "Dato general actualizado" });
   } catch (error) {
-    res.status(500).json({ message: "No se pudo actualizar", id: id.length });
+    res.status(500).json({ message: "No se pudo actualizar"});
   }
 };

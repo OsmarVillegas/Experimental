@@ -4,7 +4,7 @@ import { ObjectId } from "mongodb";
 
 export const findAllPreparacionAcademicaCtrl = async (req, res) => {
   try {
-    const db = getDb();
+    const db = await getDb();
     const collection = db.collection("preparacionacademicas");
     const preparacionacademicas = await collection.find().toArray();
 

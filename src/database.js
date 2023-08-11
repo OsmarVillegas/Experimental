@@ -12,7 +12,7 @@ async function connectToDatabase() {
       }
     );
     console.log("DB is connected");
-    db = client.db();
+    db = await client.db();
   } catch (error) {
     console.error(error);
   }

@@ -21,7 +21,7 @@ router.post("/Formato_FCAPS", uploadFileFormatoFCAPS(), async (req, res) => {
       path.resolve("/tmp/Formato_FCAPS.pdf")
     );
 
-    const db = getDb();
+    const db = await getDb();
     var collection = db.collection("Formato_FCAPS");
 
     const archivo = { id: 1, FileData: Buffer.from(documento) };
@@ -39,7 +39,7 @@ router.post("/Formato_FCAPS", uploadFileFormatoFCAPS(), async (req, res) => {
 
 router.get("/Formato_FCAPS", async (req, res) => {
   try {
-    const db = getDb();
+    const db = await getDb();
     var collection = db.collection("Formato_FCAPS");
 
     var archivo = await collection.findOne({ id: 1 });
@@ -70,7 +70,7 @@ router.post("/Jefatura", uploadFileJefatura(), async (req, res) => {
   try {
     var documento = await fs.readFileSync(path.resolve("/tmp/Jefatura.pdf"));
 
-    const db = getDb();
+    const db = await getDb();
     var collection = db.collection("Jefatura");
 
     const archivo = { id: 1, FileData: Buffer.from(documento) };
@@ -88,7 +88,7 @@ router.post("/Jefatura", uploadFileJefatura(), async (req, res) => {
 
 router.get("/Jefatura", async (req, res) => {
   try {
-    const db = getDb();
+    const db = await getDb();
     var collection = db.collection("Jefatura");
 
     var archivo = await collection.findOne({ id: 1 });
@@ -119,7 +119,7 @@ router.post("/SNTE", uploadFileSNTE(), async (req, res) => {
   try {
     var documento = await fs.readFileSync(path.resolve("/tmp/SNTE.pdf"));
 
-    const db = getDb();
+    const db = await getDb();
     var collection = db.collection("SNTE");
 
     const archivo = { id: 1, FileData: Buffer.from(documento) };
@@ -137,7 +137,7 @@ router.post("/SNTE", uploadFileSNTE(), async (req, res) => {
 
 router.get("/SNTE", async (req, res) => {
   try {
-    const db = getDb();
+    const db = await getDb();
     var collection = db.collection("SNTE");
 
     var archivo = await collection.findOne({ id: 1 });
@@ -169,7 +169,7 @@ router.post("/CentralesDRs", uploadFileCentralesDRs(), async (req, res) => {
     var documento = await fs.readFileSync(
       path.resolve("/tmp/CentralesDRs.pdf")
     );
-    const db = getDb();
+    const db = await getDb();
     var collection = db.collection("CentralesDRs");
 
     const archivo = { id: 1, FileData: Buffer.from(documento) };
@@ -187,7 +187,7 @@ router.post("/CentralesDRs", uploadFileCentralesDRs(), async (req, res) => {
 
 router.get("/CentralesDRs", async (req, res) => {
   try {
-    const db = getDb();
+    const db = await getDb();
     var collection = db.collection("CentralesDRs");
 
     var archivo = await collection.findOne({ id: 1 });
@@ -218,7 +218,7 @@ router.post("/Educativas", uploadFileEducativas(), async (req, res) => {
   try {
     var documento = await fs.readFileSync(path.resolve("/tmp/Educativas.pdf"));
 
-    const db = getDb();
+    const db = await getDb();
     var collection = db.collection("Educativas");
 
     const archivo = { id: 1, FileData: Buffer.from(documento) };
@@ -236,7 +236,7 @@ router.post("/Educativas", uploadFileEducativas(), async (req, res) => {
 
 router.get("/Educativas", async (req, res) => {
   try {
-    const db = getDb();
+    const db = await getDb();
     var collection = db.collection("Educativas");
 
     var archivo = await collection.findOne({ id: 1 });
@@ -267,7 +267,7 @@ router.post("/Inscripcion", uploadFileInscripcion(), async (req, res) => {
   try {
     var documento = await fs.readFileSync(path.resolve("/tmp/Inscripcion.pdf"));
 
-    const db = getDb();
+    const db = await getDb();
     var collection = db.collection("Inscripcion");
 
     const archivo = { id: 1, FileData: Buffer.from(documento) };
@@ -285,7 +285,7 @@ router.post("/Inscripcion", uploadFileInscripcion(), async (req, res) => {
 
 router.get("/Inscripcion", async (req, res) => {
   try {
-    const db = getDb();
+    const db = await getDb();
     var collection = db.collection("Inscripcion");
 
     var archivo = await collection.findOne({ id: 1 });
@@ -316,7 +316,7 @@ router.post("/Horario", uploadFileHorario(), async (req, res) => {
   try {
     var documento = await fs.readFileSync(path.resolve("/tmp/Horario.pdf"));
 
-    const db = getDb();
+    const db = await getDb();
     var collection = db.collection("Horario");
 
     const archivo = { id: 1, FileData: Buffer.from(documento) };
@@ -334,7 +334,7 @@ router.post("/Horario", uploadFileHorario(), async (req, res) => {
 
 router.get("/Horario", async (req, res) => {
   try {
-    const db = getDb();
+    const db = await getDb();
     var collection = db.collection("Horario");
 
     var archivo = await collection.findOne({ id: 1 });

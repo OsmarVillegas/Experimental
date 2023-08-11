@@ -1,4 +1,4 @@
-import { MongoClient } from "mongodb"
+import { MongoClient } from "mongodb";
 
 let db;
 
@@ -17,4 +17,6 @@ async function connectToDatabase() {
 
 connectToDatabase();
 
-export { db };
+export function getDb() {
+  return db;
+}

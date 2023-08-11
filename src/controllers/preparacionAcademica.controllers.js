@@ -1,15 +1,12 @@
 import preparacionAcademica from "../models/preparacionAcademica";
-import { db } from "../database";
+import { getDb } from "../database";
 import { ObjectId } from "mongodb";
 
 export const findAllPreparacionAcademicaCtrl = async (req, res) => {
   try {
+    const db = getDb();
     const collection = db.collection("preparacionacademicas");
     const preparacionacademicas = await collection.find().toArray();
-
-    if (!db) {
-      res.send(db);
-    }
 
     res.json(preparacionacademicas);
   } catch (error) {

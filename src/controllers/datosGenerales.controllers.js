@@ -95,11 +95,12 @@ export const deleteDatosGenerales = async (req, res) => {
 
 export const updateDatosGenerales = async (req, res) => {
   const { id } = req.params;
+  const idClean = id.substring(0, id.length - 1);
   try {
     const db = await getDb();
     const collection = db.collection("datosgenerales");
 
-    const idClean = id.substring(0, id.length - 1);
+
 
 
     const result = await collection.updateOne(
@@ -113,6 +114,6 @@ export const updateDatosGenerales = async (req, res) => {
 
     res.json({ message: "Dato general actualizado" });
   } catch (error) {
-    res.status(500).json({ message: "No se pudo actualizar"});
+    res.status(500).json({ message: "No se pudo actualizar", id:id.length, idClean: idClean.length });
   }
 };

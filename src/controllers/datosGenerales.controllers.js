@@ -110,6 +110,6 @@ export const updateDatosGenerales = async (req, res) => {
     
     res.json({ message: "Dato general actualizado" });
   } catch (error) {
-    res.status(500).json({ message: "No se pudo actualizar", id: id.length });
+    res.status(500).json({ message: "No se pudo actualizar", id: id });
   }
 };

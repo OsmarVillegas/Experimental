@@ -85,11 +85,11 @@ export const deletePreparacionAcademicaCtrl = async (req, res) => {
 export const updatePreparacionAcademicaCtrl = async (req, res) => {
   const { id } = req.params;
   try {
-    const db = await getDb();
+    const db = getDb();
     const collection = db.collection("preparacionacademicas");
 
-    const result = await collection.updateOne(
-      { _id: new ObjectId(id) },
+    const result = collection.updateOne(
+      { _id: new ObjectId("649f6e29e4380e7bf9b68143") },
       { $set: req.body }
     );
 

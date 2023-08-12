@@ -67,7 +67,7 @@ export const deletePreparacionAcademicaCtrl = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const db = await getDb();
+    const db = getDb();
     const collection = db.collection("preparacionacademicas");
 
     const result = await collection.deleteOne({ _id: new ObjectId(id) });
@@ -85,7 +85,7 @@ export const deletePreparacionAcademicaCtrl = async (req, res) => {
 export const updatePreparacionAcademicaCtrl = async (req, res) => {
   const { id } = req.params;
   try {
-    const db = getDb();
+    const db = await getDb();
     const collection = db.collection("preparacionacademicas");
 
     const result = collection.updateOne(

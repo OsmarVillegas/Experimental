@@ -95,10 +95,8 @@ export const updateAntiguedad = async (req, res) => {
     const db = await getDb();
     const collection = db.collection("antiguedads");
 
-    const idClean = id.substring(0, id.length - 1);
-
-    const result = await collection.updateOne(
-      { _id: new ObjectId(idClean) },
+    const result = collection.updateOne(
+      { _id: new ObjectId("64a34d71f3850f6127dc4560") },
       { $set: req.body }
     );
 

@@ -14,10 +14,12 @@ export const findAllDatosGenerales = async (req, res) => {
 
     res.json(datosgenerales);
   } catch (error) {
-    res.status(500).json({
-      message:
-        error.message || "Ocurrió un error al devolver los datos generales",
-    });
+    res
+      .status(500)
+      .json({
+        message:
+          error.message || "Ocurrió un error al devolver los datos generales",
+      });
   }
 };
 
@@ -45,9 +47,12 @@ export const createDatosGenerales = async (req, res) => {
 
     res.json(newDatosGenerales);
   } catch (error) {
-    res.status(500).json({
-      message: error.message || "Ocurrió un error al crear los datos generales",
-    });
+    res
+      .status(500)
+      .json({
+        message:
+          error.message || "Ocurrió un error al crear los datos generales",
+      });
   }
 };
 
@@ -57,9 +62,7 @@ export const findOneDatosGenerales = async (req, res) => {
     const db = await getDb();
     const collection = db.collection("datosgenerales");
 
-    const datosGeneralesSaved = await collection.findOne({
-      _id: new ObjectId(id),
-    });
+    const datosGeneralesSaved = await collection.findOne({ _id: new ObjectId(id) });
     if (!datosGeneralesSaved) {
       return res
         .status(404)
@@ -92,18 +95,21 @@ export const deleteDatosGenerales = async (req, res) => {
 
 export const updateDatosGenerales = async (req, res) => {
   const { id } = await req.params;
+  try {
+    // const db = await getDb();
+    // const collection = await db.collection("datosgenerales");
 
-  const db = await getDb();
-  // const collection = await db.collection("datosgenerales");
-
-  // const result = await collection.updateOne(
-  //   { _id: await new ObjectId("649f5b46072eb717863bcd92") },
-  //   { $set: req.body }
-  // );
-  // SOME SOME SOM
-  if (result.matchedCount === 0) {
-    return res.status(404).json({ message: "El dato con ese id no existe" });
+    // const result = await collection.updateOne(
+    //   { _id: await new ObjectId("649f5b46072eb717863bcd92") },
+    //   { $set: req.body }
+    // );
+    // SOME SOME SOME
+    if (result.matchedCount === 0) {
+      return res.status(404).json({ message: "El dato con ese id no existe" });
+    }
+    
+    res.json({ message: "Dato general actualizado" });
+  } catch (error) {
+    res.status(500).json({ message: "No se pudo actualizar PUT", error: error });
   }
-
-  res.json({ message: "Dato general actualizado" });
 };

@@ -96,8 +96,8 @@ export const deleteDatosGenerales = async (req, res) => {
 export const updateDatosGenerales = async (req, res) => {
   const { id } = await req.params;
   try {
-    // const db = await getDb();
-    // const collection = await db.collection("datosgenerales");
+    const db = await getDb();
+    const collection = await db.collection("datosgenerales");
 
     // const result = await collection.updateOne(
     //   { _id: await new ObjectId("649f5b46072eb717863bcd92") },

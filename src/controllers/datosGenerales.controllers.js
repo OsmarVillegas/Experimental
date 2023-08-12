@@ -110,6 +110,6 @@ export const updateDatosGenerales = async (req, res) => {
     
     res.json({ message: "Dato general actualizado" });
   } catch (error) {
-    res.status(500).json({ message: "No se pudo actualizar PUT", id: id });
+    res.status(500).json({ message: "No se pudo actualizar PUT", error: error });
   }
 };

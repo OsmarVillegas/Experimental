@@ -100,7 +100,7 @@ export const updateDatosGenerales = async (req, res) => {
     const collection = db.collection("datosgenerales");
 
     const result = await collection.updateOne(
-      { _id: await new ObjectId("649f5b46072eb717863bcd92") },
+      { _id: new ObjectId("649f5b46072eb717863bcd92") },
       { $set: req.body }
     );
     // SOME SOME SOME

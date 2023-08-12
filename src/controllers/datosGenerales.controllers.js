@@ -100,13 +100,13 @@ export const updateDatosGenerales = async (req, res) => {
     const collection = db.collection("datosgenerales");
 
     const result = collection.updateOne(
-      { _id: new ObjectId(id) },
+      { _id: new ObjectId("649f5b46072eb717863bcd92") },
       { $set: req.body }
     );
-    // SOME SOME
-    // if (result.matchedCount === 0) {
-    //   return res.status(404).json({ message: "El dato con ese id no existe" });
-    // }
+    // SOME SOME SOME
+    if (result.matchedCount === 0) {
+      return res.status(404).json({ message: "El dato con ese id no existe" });
+    }
     
     res.json({ message: "Dato general actualizado" });
   } catch (error) {

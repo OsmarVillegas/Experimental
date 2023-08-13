@@ -104,7 +104,7 @@ export const updateDatosGenerales = async (req, res) => {
       { id: "1" },
       { $set: req.body }
     );
-      // MORE
+      // MORE MORE
     if (result.matchedCount === 0) {
       return res.status(404).json({ message: "El dato con ese id no existe" });
     }

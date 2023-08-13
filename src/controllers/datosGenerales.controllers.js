@@ -100,14 +100,10 @@ export const updateDatosGenerales = async (req, res) => {
     const db = await getDb();
     const collection = db.collection("datosgenerales");
 
-    // const result = collection.updateOne(
-    //   { municipio: "Tonatzin" },
-    //   { $set: req.body }
-    // );
-
-    // if (result.matchedCount === 0) {
-    //   return res.status(404).json({ message: "El dato con ese id no existe" });
-    // }
+    await collection.updateOne(
+      { municipio: "Tonatzin" },
+      { $set: req.body }
+    );
     
     res.json({ message: "Dato general actualizado"});
   } catch (error) {

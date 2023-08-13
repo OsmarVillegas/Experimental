@@ -88,12 +88,8 @@ export const updatePreparacionAcademicaCtrl = async (req, res) => {
     const db = await getDb();
     const collection = db.collection("preparacionacademicas");
 
-    const valueID = new ObjectId("649f6e29e4380e7bf9b68143")
-
-    console.log(valueID)
-
     const result = collection.updateOne(
-      { _id: valueID },
+      { id: "1" },
       { $set: req.body }
     );
 

@@ -96,7 +96,7 @@ export const updateAntiguedad = async (req, res) => {
     const collection = db.collection("antiguedads");
 
     const result = collection.updateOne(
-      { _id: new ObjectId("64a34d71f3850f6127dc4560") },
+      { _id: "1" },
       { $set: req.body }
     );
 

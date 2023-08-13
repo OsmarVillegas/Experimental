@@ -95,8 +95,8 @@ export const deleteDatosGenerales = async (req, res) => {
 
 export const updateDatosGenerales = async (req, res) => {
   const { id } = req.params;
+  const db = await getDb();
   try {
-    const db = await getDb();
     const collection = db.collection("datosgenerales");
 
     const result = collection.updateOne(
@@ -110,6 +110,6 @@ export const updateDatosGenerales = async (req, res) => {
     
     res.json({ message: "Dato general actualizado" });
   } catch (error) {
-    res.status(500).json({ message: "No se pudo actualizar PUT", error: error });
+    res.status(500).json({ message: "No se pudo actualizar PUT", db: db });
   }
 };

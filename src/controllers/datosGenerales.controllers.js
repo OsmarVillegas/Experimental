@@ -104,8 +104,7 @@ export const updateDatosGenerales = async (req, res) => {
       { id: "1" },
       { $set: req.body }
     );
-    
-    // SOME
+
     
     res.json({ message: "Dato general actualizado"});
   } catch (error) {

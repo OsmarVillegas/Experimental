@@ -93,11 +93,12 @@ export const updateAntiguedad = async (req, res) => {
 
   try {
     const db = await getDb();
-    const collection = db.collection("antiguedads");
+    const collection = await db.collection("antiguedads");
 
-    const result = collection.updateOne(
+    const result = collection.updateMany(
       { _id: "1" },
-      { $set: req.body }
+      { $set: { valoresAntiguedad: req.body.valoresAntiguedad } },
+      { upsert: true }
     );
 
     if (result.matchedCount === 0) {

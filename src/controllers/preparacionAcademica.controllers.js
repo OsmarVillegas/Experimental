@@ -84,13 +84,15 @@ export const deletePreparacionAcademicaCtrl = async (req, res) => {
 
 export const updatePreparacionAcademicaCtrl = async (req, res) => {
   const { id } = req.params;
+
   try {
     const db = await getDb();
-    const collection = db.collection("preparacionacademicas");
+    const collection = await db.collection("preparacionacademicas");
 
-    const result = collection.updateOne(
+    const result = collection.updateMany(
       { id: "1" },
-      { $set: req.body }
+      { $set: { primaria: req.body.primaria, secundaria: req.body.secundaria, carreraC: req.body.carreraC, licenciatura: req.body.licenciatura } },
+      { upsert: true }
     );
 
     if (result.matchedCount === 0) {

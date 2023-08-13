@@ -105,8 +105,6 @@ export const updateDatosGenerales = async (req, res) => {
       { $set: {anio: req.body.anio, etapa: req.body.etapa, etapaConLetra: req.body.etapaConLetra, fechaLimite: req.body.fechaLimite, municipio: req.body.municipio, periodoEvaluado: req.body.periodoEvaluado } },
       { upsert: true }
     );
-
-  
     
     res.json({ message: "Dato general actualizado"});
   } catch (error) {

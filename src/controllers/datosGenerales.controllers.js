@@ -101,10 +101,10 @@ export const updateDatosGenerales = async (req, res) => {
     const collection = db.collection("datosgenerales");
 
     const result = collection.updateOne(
-      { id: "1" },
+      { municipio: "Tonatzin" },
       { $set: req.body }
     );
-      // MORE MORE
+
     if (result.matchedCount === 0) {
       return res.status(404).json({ message: "El dato con ese id no existe" });
     }

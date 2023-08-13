@@ -104,7 +104,7 @@ export const updateAntiguedad = async (req, res) => {
       return res.status(404).json({ message: "El dato con ese id no existe" });
     }
     // MORE MORE
-    res.json({ message: "Dato general actualizado" });
+    res.json({ message: "Dato general actualizado", result: result });
   } catch (error) {
     res.status(500).json({ message: "No se pudo actualizar" });
   }

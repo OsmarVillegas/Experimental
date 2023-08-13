@@ -88,13 +88,13 @@ export const updatePreparacionAcademicaCtrl = async (req, res) => {
     const db = await getDb();
     const collection = db.collection("preparacionacademicas");
 
-    const result = collection.updateOne(
+    const result = await collection.updateOne(
       { _id: new ObjectId("649f6e29e4380e7bf9b68143") },
       { $set: req.body }
     );
 
     if (result.matchedCount === 0) {
-      return res.status(404).json({ message: "El dato con ese id no existe" });
+      return res.status(404).json({ message: "El dato con ese id no existe", result: result });
     }
 
     res.json({ message: "Dato general actualizado" });

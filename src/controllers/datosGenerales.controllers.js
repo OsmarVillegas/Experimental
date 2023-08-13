@@ -95,21 +95,24 @@ export const deleteDatosGenerales = async (req, res) => {
 
 export const updateDatosGenerales = async (req, res) => {
   const { id } = req.params;
-  const db = await getDb();
+
   try {
     const collection = db.collection("datosgenerales");
+    const db = await getDb();
 
-    const result = collection.updateOne(
-      { _id: new ObjectId("649f5b46072eb717863bcd92") },
-      { $set: req.body }
-    );
+    // const result = collection.updateOne(
+    //   { _id: new ObjectId("649f5b46072eb717863bcd92") },
+    //   { $set: req.body }
+    // );
 
-    if (result.matchedCount === 0) {
-      return res.status(404).json({ message: "El dato con ese id no existe" });
-    }
+    // if (result.matchedCount === 0) {
+    //   return res.status(404).json({ message: "El dato con ese id no existe" });
+    // }
     
-    res.json({ message: "Dato general actualizado", db: db });
+    // res.json({ message: "Dato general actualizado"});
+    res.send(db);
   } catch (error) {
-    res.status(500).json({ message: "No se pudo actualizar PUT", db: db });
+    // res.status(500).json({ message: "No se pudo actualizar PUT" });
+    res.send(error);
   }
 };

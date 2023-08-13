@@ -100,7 +100,7 @@ export const updateDatosGenerales = async (req, res) => {
     const db = await getDb();
     const collection = db.collection("datosgenerales");
 
-    await collection.update(
+    collection.update(
       { id: "1" },
       { $set: req.body }
     );

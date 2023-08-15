@@ -8,6 +8,7 @@ import antiguedadRoutes from './routes/antiguedad.routes'
 import preparacionAcademicaRoutes from './routes/preparacionAcademica.routes'
 import cursosRoutes from './routes/cursos.routes'
 import filesRoutes from './routes/files.routes'
+import modoImpresionRoutes from './routes/modoImpresion'
 import multer from "multer";
 
 const app = express()
@@ -45,5 +46,6 @@ app.use('/api/datosGenerales',datosGeneralesRoutes)
 app.use('/api/antiguedad',antiguedadRoutes)
 app.use('/api/preparacionAcademica',preparacionAcademicaRoutes)
 app.use('/api/cursos',cursosRoutes)
+app.use('/api/modoImpresion',modoImpresionRoutes)
 
 export default app;

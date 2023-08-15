@@ -12,7 +12,7 @@ export const findAllModoImpresionCtrl = async (req, res) => {
   } catch (error) {
     res.status(500).json({
       message:
-        error.message || "Ocurrió un error al devolver los datos generales",
+        error.message || "Ocurrió un error al devolver los datos del modo impresión",
     });
   }
 };
@@ -37,7 +37,7 @@ export const createModoImpresionCtrl = async (req, res) => {
     res.json(newModoImpresion);
   } catch (error) {
     res.status(500).json({
-      message: error.message || "Ocurrió un error al crear los datos generales",
+      message: error.message || "Ocurrió un error al crear los datos del modo impresión",
     });
   }
 };
@@ -52,7 +52,7 @@ export const findOneModoImpresionCtrl = async (req, res) => {
     if (!preparacionacademicasSaved) {
       return res
         .status(404)
-        .json({ message: "El dato general con ese id no existe" });
+        .json({ message: "El dato modo impresión con ese id no existe" });
     }
 
     res.json(preparacionacademicasSaved);
@@ -97,7 +97,7 @@ export const updateModoImpresionCtrl = async (req, res) => {
       return res.status(404).json({ message: "El dato con ese id no existe", result: result });
     }
 
-    res.json({ message: "Dato general actualizado" });
+    res.json({ message: "Dato modo impresión actualizado" });
   } catch (error) {
     res.status(500).json({ message: "No se pudo actualizar" });
   }

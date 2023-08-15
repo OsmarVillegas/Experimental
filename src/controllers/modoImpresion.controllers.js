@@ -101,4 +101,5 @@ export const updateModoImpresionCtrl = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: "No se pudo actualizar" });
   }
+  // SOME
 };

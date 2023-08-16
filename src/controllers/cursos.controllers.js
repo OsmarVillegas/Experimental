@@ -94,7 +94,8 @@ export const updateCursos = async (req, res) => {
 
     const result = await collection.updateOne(
       { _id: new ObjectId(req.params.id) },
-      { $set: req.body }
+      { $set: req.body },
+      { upsert: true }
     );
 
     if (result.matchedCount === 0) {

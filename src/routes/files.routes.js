@@ -28,7 +28,8 @@ router.post("/Formato_FCAPS", uploadFileFormatoFCAPS(), async (req, res) => {
 
     collection.updateOne(
       { id: 1 },
-      { $set: { id: archivo.id, file: archivo.FileData } }
+      { $set: { id: archivo.id, file: archivo.FileData } },
+      { upsert: true }
     );
 
     res.send("ok");
@@ -77,7 +78,8 @@ router.post("/Jefatura", uploadFileJefatura(), async (req, res) => {
 
     collection.updateOne(
       { id: 1 },
-      { $set: { id: archivo.id, file: archivo.FileData } }
+      { $set: { id: archivo.id, file: archivo.FileData } },
+      { upsert: true }
     );
 
     res.send("ok");
@@ -126,7 +128,8 @@ router.post("/SNTE", uploadFileSNTE(), async (req, res) => {
 
     collection.updateOne(
       { id: 1 },
-      { $set: { id: archivo.id, file: archivo.FileData } }
+      { $set: { id: archivo.id, file: archivo.FileData } },
+      { upsert: true }
     );
 
     res.send("ok");
@@ -176,7 +179,8 @@ router.post("/CentralesDRs", uploadFileCentralesDRs(), async (req, res) => {
 
     collection.updateOne(
       { id: 1 },
-      { $set: { id: archivo.id, file: archivo.FileData } }
+      { $set: { id: archivo.id, file: archivo.FileData } },
+      { upsert: true }
     );
 
     res.send("ok");
@@ -225,7 +229,8 @@ router.post("/Educativas", uploadFileEducativas(), async (req, res) => {
 
     collection.updateOne(
       { id: 1 },
-      { $set: { id: archivo.id, file: archivo.FileData } }
+      { $set: { id: archivo.id, file: archivo.FileData } },
+      { upsert: true }
     );
 
     res.send("ok");
@@ -274,7 +279,8 @@ router.post("/Inscripcion", uploadFileInscripcion(), async (req, res) => {
 
     collection.updateOne(
       { id: 1 },
-      { $set: { id: archivo.id, file: archivo.FileData } }
+      { $set: { id: archivo.id, file: archivo.FileData } },
+      { upsert: true }
     );
 
     res.send("ok");
@@ -323,7 +329,8 @@ router.post("/Horario", uploadFileHorario(), async (req, res) => {
 
     collection.updateOne(
       { id: 1 },
-      { $set: { id: archivo.id, file: archivo.FileData } }
+      { $set: { id: archivo.id, file: archivo.FileData } },
+      { upsert: true }
     );
 
     res.send("ok");

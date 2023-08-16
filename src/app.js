@@ -17,6 +17,7 @@ app.use((req, res, next) => {
     // res.append('Access-Control-Allow-Origin',['http://localhost:4200']);
     res.append('Access-Control-Allow-Origin',['https://copper-axiom-368104.web.app','http://localhost:4200']);
     res.append('Access-Control-Allow-Methods','GET,PUT,POST,DELETE');
+    res.setHeader('Connection', 'keep-alive');
     // res.append('Access-Control-Allow-Headers',['Content-Type']);
     next()
 })

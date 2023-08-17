@@ -9,5 +9,6 @@ router.get('/', antiguedadCtrl.findAllAntiguedad);
 
 router.put('/:id', antiguedadCtrl.updateAntiguedad);
 
+router.delete('/:id', antiguedadCtrl.deleteAntiguedad);
 
 export default router;

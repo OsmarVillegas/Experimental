@@ -36,6 +36,7 @@ export const createAntiguedad = async (req, res) => {
 
     const newAntiguedad = {
       valoresAntiguedad: req.body.valoresAntiguedad,
+      id: "1"
     };
 
     await collection.insertOne(newAntiguedad);
@@ -57,7 +58,7 @@ export const findOneAntiguedad = async (req, res) => {
     const db = await getDb();
     const collection = db.collection("antiguedads");
 
-    const antiguedadSaved = await collection.findOne({ _id: new ObjectId(id) });
+    const antiguedadSaved = await collection.findOne({ id: new ObjectId(id) });
     if (!antiguedadSaved) {
       return res
         .status(404)
@@ -96,7 +97,7 @@ export const updateAntiguedad = async (req, res) => {
     const collection = await db.collection("antiguedads");
 
     const result = collection.updateMany(
-      { _id: "1" },
+      { id: "1" },
       { $set: { valoresAntiguedad: req.body.valoresAntiguedad } },
       { upsert: true }
     );

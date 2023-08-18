@@ -22,7 +22,7 @@ app.use((req, res, next) => {
     next()
 })
 
-// MORE
+// MORE SOME
 
 const whiteList = ['https://copper-axiom-368104.web.app','http://localhost:4200']
 

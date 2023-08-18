@@ -4,7 +4,7 @@ import { ObjectId } from "mongodb";
 
 export const findAllDatosGenerales = async (req, res) => {
   try {
-    const db = await getDb();
+    const db = getDb();
     const collection = db.collection("datosgenerales");
     const datosgenerales = await collection.find().toArray();
 

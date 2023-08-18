@@ -12,7 +12,7 @@ async function connectToDatabase() {
       }
     );
     console.log("DB is connected");
-    db = await client.db();
+    return client.db();
   } catch (error) {
     console.error(error);
   }
@@ -20,6 +20,12 @@ async function connectToDatabase() {
 
 connectToDatabase();
 
-export function getDb() {
-  return db;
+export async function getDb() {
+  try {
+    db = await connectToDatabase(); // Obtiene la referencia a la base de datos
+    // Aquí puedes usar db para realizar operaciones en la base de datos
+    return db
+  } catch (error) {
+    console.error(error);
+  }
 }

@@ -3,15 +3,22 @@ import { getDb } from "../database";
 import { ObjectId } from "mongodb";
 
 export const findAllEmpleados = async (req, res) => {
+  let nombre = await req.query.nombre;
   try {
     const db = await getDb();
     const collection = db.collection("empleados");
-    
-    const empleados = await collection.find().toArray();
+
+    if(nombre === undefined){
+      nombre = "";
+    }
+
+    const empleados = await collection.find({nombreEmpleado: {$regex: `^${nombre}`}}).toArray();
 
     if (!db) {
       res.send(db);
     }
+
+    console.log(nombre);
 
     res.json(empleados);
   } catch (error) {
@@ -101,8 +108,8 @@ export const updateEmpleados = async (req, res) => {
     const result = collection.updateMany(
       { id: "1" },
       { $set: { id: req.body.id,
-        claveCentro: req.body.claveCentro,
-        nombreCentro: req.body.nombreCentro } },
+        RFC: req.body.RFC,
+        nombreEmpleado: req.body.nombreEmpleado } },
       { upsert: true }
     );
 

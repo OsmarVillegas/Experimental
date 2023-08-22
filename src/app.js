@@ -6,10 +6,11 @@ import cors from 'cors'
 import datosGeneralesRoutes from './routes/datosGenerales.routes'
 import antiguedadRoutes from './routes/antiguedad.routes'
 import preparacionAcademicaRoutes from './routes/preparacionAcademica.routes'
+import empleadosRoutes from './routes/empleados.routes'
 import cursosRoutes from './routes/cursos.routes'
 import filesRoutes from './routes/files.routes'
+import centrosDeTrabajoRoutes from "./routes/centroDeTrabajo.routes";
 import modoImpresionRoutes from './routes/modoImpresion'
-import multer from "multer";
 
 const app = express()
 
@@ -45,6 +46,8 @@ app.get('/', (req, res) => {
 app.use('/api/files/',filesRoutes)
 app.use('/api/datosGenerales',datosGeneralesRoutes)
 app.use('/api/antiguedad',antiguedadRoutes)
+app.use('/api/centroDeTrabajo',centrosDeTrabajoRoutes)
+app.use('/api/empleados',empleadosRoutes)
 app.use('/api/preparacionAcademica',preparacionAcademicaRoutes)
 app.use('/api/cursos',cursosRoutes)
 app.use('/api/modoImpresion',modoImpresionRoutes)

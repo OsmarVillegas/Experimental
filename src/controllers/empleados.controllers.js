@@ -12,7 +12,7 @@ export const findAllEmpleados = async (req, res) => {
       RFC = "";
     }
 
-    const empleados = await collection.find({RFC: {$regex: `^${RFC}`}}).toArray();
+    const empleados = await collection.find({RFC: {$regex: `${RFC}`}}).toArray();
 
     if (!db) {
       res.send(db);

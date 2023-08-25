@@ -3,22 +3,20 @@ import { getDb } from "../database";
 import { ObjectId } from "mongodb";
 
 export const findAllEmpleados = async (req, res) => {
-  let nombre = await req.query.nombre;
+  let RFC = await req.query.nombre;
   try {
     const db = await getDb();
     const collection = db.collection("empleados");
 
-    if(nombre === undefined){
-      nombre = "";
+    if(RFC === undefined){
+      RFC = "";
     }
 
-    const empleados = await collection.find({nombreEmpleado: {$regex: `^${nombre}`}}).toArray();
+    const empleados = await collection.find({RFC: {$regex: `^${RFC}`}}).toArray();
 
     if (!db) {
       res.send(db);
     }
-
-    console.log(nombre);
 
     res.json(empleados);
   } catch (error) {

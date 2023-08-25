@@ -12,7 +12,7 @@ export const findAllCentroDeTrabajo = async (req, res) => {
       claveCentro = "";
     }
     
-    const centroDeTrabajo = await collection.find({claveCentro: {$regex: `^${claveCentro}`}}).toArray();
+    const centroDeTrabajo = await collection.find({claveCentro: {$regex: `${claveCentro}`}}).toArray();
 
     console.log(claveCentro)
 

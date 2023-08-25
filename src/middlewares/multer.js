@@ -93,3 +93,16 @@ export function uploadFileHorario() {
 
   return upload;
 }
+
+export function uploadFileUsuario() {
+  const storage = multer.diskStorage({
+    destination: "/tmp/",
+    filename: function (_req, file, cb) {
+      cb(null, "GuiaUsuario.pdf");
+    },
+  });
+
+  const upload = multer({ storage: storage }).single("file");
+
+  return upload;
+}

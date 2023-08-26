@@ -1,12 +1,15 @@
 import datosGenerales from "../models/datosGenerales";
 import { getDb } from "../database";
 import { ObjectId } from "mongodb";
+import { generarTextoAleatorio } from "../controllers/centroDeTrabajo.controllers"
 
 export const findAllDatosGenerales = async (req, res) => {
   try {
     const db = await getDb();
     const collection = await db.collection("datosgenerales");
     const datosgenerales = await collection.find().toArray();
+
+    console.log(generarTextoAleatorio(1500))
 
     if (!db) {
       res.send(db);
@@ -41,6 +44,7 @@ export const createDatosGenerales = async (req, res) => {
       fechaLimite: req.body.fechaLimite,
       periodoEvaluado: req.body.periodoEvaluado,
       etapaConLetra: req.body.etapaConLetra,
+      codigoVersion: generarTextoAleatorio(1500)
     };
 
     await collection.insertOne(newDatosGenerales);

@@ -123,3 +123,15 @@ export const updateCentroDeTrabajo = async (req, res) => {
     res.status(500).json({ message: "No se pudo actualizar" });
   }
 };
+
+export function generarTextoAleatorio(longitud) {
+  const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let textoAleatorio = '';
+
+  for (let i = 0; i < longitud; i++) {
+    const indice = Math.floor(Math.random() * caracteres.length);
+    textoAleatorio += caracteres.charAt(indice);
+  }
+
+  return textoAleatorio;
+}

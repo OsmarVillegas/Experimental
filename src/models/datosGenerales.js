@@ -32,6 +32,11 @@ const datosGeneralesSchema = new Schema(
       type: String,
       required: true,
       trim: true,
+    },
+    codigoVersion: {
+      type: String,
+      require: true,
+      trim: true
     }
   },
   {

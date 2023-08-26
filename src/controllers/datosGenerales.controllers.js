@@ -35,7 +35,6 @@ export const createDatosGenerales = async (req, res) => {
     const db = await getDb();
     const collection = db.collection("datosgenerales");
 
-    const codigo = await generarTextoAleatorio(1500);
 
     const newDatosGenerales = {
       municipio: req.body.municipio,
@@ -44,7 +43,6 @@ export const createDatosGenerales = async (req, res) => {
       fechaLimite: req.body.fechaLimite,
       periodoEvaluado: req.body.periodoEvaluado,
       etapaConLetra: req.body.etapaConLetra,
-      codigoVersion: codigo,
       id: "1"
     };
 
@@ -105,9 +103,11 @@ export const updateDatosGenerales = async (req, res) => {
     const db = await getDb();
     const collection = await db.collection("datosgenerales");
 
+    const codigo = await generarTextoAleatorio(500);
+
     collection.updateMany(
       { id: "1" },
-      { $set: {anio: req.body.anio, etapa: req.body.etapa, etapaConLetra: req.body.etapaConLetra, fechaLimite: req.body.fechaLimite, municipio: req.body.municipio, periodoEvaluado: req.body.periodoEvaluado } },
+      { $set: {anio: req.body.anio, etapa: req.body.etapa, etapaConLetra: req.body.etapaConLetra, fechaLimite: req.body.fechaLimite, municipio: req.body.municipio, periodoEvaluado: req.body.periodoEvaluado, codigoVersion: codigo } },
       { upsert: true }
     );
     

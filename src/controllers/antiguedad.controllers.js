@@ -96,9 +96,11 @@ export const updateAntiguedad = async (req, res) => {
     const db = await getDb();
     const collection = await db.collection("antiguedads");
 
+    const codigo = await generarTextoAleatorio(500);
+
     const result = collection.updateMany(
       { id: "1" },
-      { $set: { valoresAntiguedad: req.body.valoresAntiguedad } },
+      { $set: { valoresAntiguedad: req.body.valoresAntiguedad, codigoVersion: codigo } },
       { upsert: true }
     );
 

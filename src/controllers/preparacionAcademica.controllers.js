@@ -89,9 +89,11 @@ export const updatePreparacionAcademicaCtrl = async (req, res) => {
     const db = await getDb();
     const collection = await db.collection("preparacionacademicas");
 
+    const codigo = await generarTextoAleatorio(500);
+
     const result = collection.updateMany(
       { id: "1" },
-      { $set: { primaria: req.body.primaria, secundaria: req.body.secundaria, carreraC: req.body.carreraC, licenciatura: req.body.licenciatura } },
+      { $set: { primaria: req.body.primaria, secundaria: req.body.secundaria, carreraC: req.body.carreraC, licenciatura: req.body.licenciatura, codigoVersion: codigo  } },
       { upsert: true }
     );
 

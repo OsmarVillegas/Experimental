@@ -1,6 +1,7 @@
 import Antiguedad from "../models/antiguedad";
 import { getDb } from "../database";
 import { ObjectId } from "mongodb";
+import { generarTextoAleatorio } from "../controllers/centroDeTrabajo.controllers"
 
 export const findAllAntiguedad = async (req, res) => {
   try {

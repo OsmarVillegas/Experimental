@@ -1,6 +1,7 @@
 import preparacionAcademica from "../models/preparacionAcademica";
 import { getDb } from "../database";
 import { ObjectId } from "mongodb";
+import { generarTextoAleatorio } from "../controllers/centroDeTrabajo.controllers"
 
 export const findAllPreparacionAcademicaCtrl = async (req, res) => {
   try {

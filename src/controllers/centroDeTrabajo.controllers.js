@@ -124,7 +124,7 @@ export const updateCentroDeTrabajo = async (req, res) => {
   }
 };
 
-export function generarTextoAleatorio(longitud) {
+export async function generarTextoAleatorio(longitud) {
   const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   let textoAleatorio = '';
 

@@ -9,8 +9,6 @@ export const findAllDatosGenerales = async (req, res) => {
     const collection = await db.collection("datosgenerales");
     const datosgenerales = await collection.find().toArray();
 
-    console.log(generarTextoAleatorio(1500))
-
     if (!db) {
       res.send(db);
     }
@@ -37,6 +35,8 @@ export const createDatosGenerales = async (req, res) => {
     const db = await getDb();
     const collection = db.collection("datosgenerales");
 
+    const codigo = await generarTextoAleatorio(1500);
+
     const newDatosGenerales = {
       municipio: req.body.municipio,
       anio: req.body.anio,
@@ -44,7 +44,8 @@ export const createDatosGenerales = async (req, res) => {
       fechaLimite: req.body.fechaLimite,
       periodoEvaluado: req.body.periodoEvaluado,
       etapaConLetra: req.body.etapaConLetra,
-      codigoVersion: generarTextoAleatorio(1500)
+      codigoVersion: codigo,
+      id: "1"
     };
 
     await collection.insertOne(newDatosGenerales);

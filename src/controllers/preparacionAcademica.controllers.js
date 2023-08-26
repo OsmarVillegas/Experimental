@@ -90,7 +90,7 @@ export const updatePreparacionAcademicaCtrl = async (req, res) => {
     const db = await getDb();
     const collection = await db.collection("preparacionacademicas");
 
-    const codigo = await generarTextoAleatorio(500);
+    const codigo = await generarTextoAleatorio(10);
 
     const result = collection.updateMany(
       { id: "1" },

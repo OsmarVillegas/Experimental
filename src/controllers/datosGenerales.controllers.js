@@ -103,7 +103,7 @@ export const updateDatosGenerales = async (req, res) => {
     const db = await getDb();
     const collection = await db.collection("datosgenerales");
 
-    const codigo = await generarTextoAleatorio(500);
+    const codigo = await generarTextoAleatorio(10);
 
     collection.updateMany(
       { id: "1" },

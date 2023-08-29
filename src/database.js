@@ -5,7 +5,7 @@ let db;
 async function connectToDatabase() {
   try {
     const client = await MongoClient.connect(
-      "mongodb+srv://optimen:optimen@cluster0.1jii1an.mongodb.net/test",
+      "mongodb+srv://USAE:USAE564@cluster0.aryeiob.mongodb.net/DataBase",
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,
